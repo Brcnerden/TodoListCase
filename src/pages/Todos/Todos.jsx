@@ -16,6 +16,7 @@ export const Todos = () => {
     setInputValue(e.target.value);
   };
 
+  // Yeni bir görev nesnesi oluşturulur. Bu nesne, kullanıcının girdiği metni, bir kimlik (UUID ile oluşturulur) ve tamamlanmış durumu (false olarak başlatılır) içerir.
   const handleClick = () => {
     if (inputValue.length > 0) {
       const newTodo = { text: inputValue, id: uuidv4(), isDone: false };
@@ -24,7 +25,13 @@ export const Todos = () => {
     }
   };
 
+  //'handleDone', bir işin tamamlandı olarak işaretlenmesini veya tamamlandı işaretinin kaldırılmasını sağlar.
+
   const handleDone = (id) => {
+    // 'id' parametresi, işlemi tamamlanmış olarak işaretlemek veya işareti kaldırmak için kullanılacak işin kimliğini belirler.
+
+    // 'todos' durumundaki işler listesi üzerinde 'map' fonksiyonu kullandım.
+    // İlgili işin 'id' özelliği 'id' parametresi ile eşleşirse, 'isDone' özelliğini tersledim.
     const updatedTodos = todos.map((item) => {
       if (id === item.id) {
         item.isDone = !item.isDone;
@@ -35,8 +42,12 @@ export const Todos = () => {
     setTodos(updatedTodos);
   };
 
+  //'handleDelete', listeden bir todoItem'ın silinmesini sağlar.
+  // 'id' parametresi silinecek işin belirler
+  // 'todos' durumundaki işler listesi, 'id' parametresine göre filtrelenir ve silinecek iş hariç tutulur.
   const handleDelete = (id) => {
     const updatedTodos = todos.filter((item) => item.id !== id);
+    // Güncellenmiş işler listesi, 'setTodos' fonksiyonu aracılığıyla 'todos' durumuna atanır, böylece silinen iş listeden çıkarılır.
     setTodos(updatedTodos);
   };
 
