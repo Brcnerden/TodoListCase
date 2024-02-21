@@ -30,8 +30,7 @@ export const Todos = () => {
   const handleDone = (id) => {
     // 'id' parametresi, işlemi tamamlanmış olarak işaretlemek veya işareti kaldırmak için kullanılacak işin kimliğini belirler.
 
-    // 'todos' durumundaki işler listesi üzerinde 'map' fonksiyonu kullandım.
-    // İlgili işin 'id' özelliği 'id' parametresi ile eşleşirse, 'isDone' özelliğini tersledim.
+    // İlgili işin 'id' özelliği 'id' parametresi ile eşleşirse, 'isDone' özelliğini tersler.
     const updatedTodos = todos.map((item) => {
       if (id === item.id) {
         item.isDone = !item.isDone;
